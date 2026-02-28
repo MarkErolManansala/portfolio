@@ -1,0 +1,71 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@plugin "daisyui" {
+  themes:
+    light --default,
+    dark --prefersdark;
+}
+
+/* 1. Define Font Variable */
+:root {
+  --main-font: "Ithaca", sans-serif;
+}
+
+/* 2. Load the Font */
+@font-face {
+  font-family: "Ithaca";
+  src: url("../assets/fonts/Ithaca-LVB75.ttf") format("truetype");
+  font-display: swap; /* Ensures text is visible while font loads */
+}
+
+/* 3. Global Defaults */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Ensures the background matches DaisyUI theme immediately */
+    background-color: var(--fallback-b1, oklch(var(--b1)));
+  }
+
+  body {
+    font-family: var(--main-font);
+    @apply antialiased; /* Makes fonts look smoother on Mac/Chrome */
+
+    /* Default text color that changes based on DaisyUI Light/Dark theme */
+    color: var(--fallback-bc, oklch(var(--bc)));
+  }
+
+  /* completion for your * { text- } snippet */
+  * {
+    @apply border-base-content/10; /* Soft default border color */
+    outline-color: var(
+      --fallback-p,
+      oklch(var(--p))
+    ); /* Outlines use primary color */
+  }
+
+  /* Improved Typography Defaults */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-black tracking-tighter;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+}
+
+/* Custom Scrollbar (Optional but recommended for dark themes) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/20 rounded-full hover:bg-primary/40 transition-colors;
+}
