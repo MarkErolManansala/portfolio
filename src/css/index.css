@@ -1,10 +1,43 @@
 @import "tailwindcss";
-@plugin "daisyui";
 
 @plugin "daisyui" {
   themes:
-    light --default,
+    yinYang --default,
     dark --prefersdark;
+}
+
+@plugin "daisyui/theme" {
+  name: "yinYang";
+  prefersdark: true;
+  color-scheme: "light";
+  --color-base-100: oklch(98% 0.002 247.839);
+  --color-base-200: oklch(96% 0.003 264.542);
+  --color-base-300: oklch(92% 0.006 264.531);
+  --color-base-content: oklch(21% 0.034 264.665);
+  --color-primary: oklch(86% 0.127 207.078);
+  --color-primary-content: oklch(30% 0.056 229.695);
+  --color-secondary: oklch(85% 0.138 181.071);
+  --color-secondary-content: oklch(27% 0.046 192.524);
+  --color-accent: oklch(80% 0.105 251.813);
+  --color-accent-content: oklch(28% 0.091 267.935);
+  --color-neutral: oklch(27% 0.033 256.848);
+  --color-neutral-content: oklch(98% 0.002 247.839);
+  --color-info: oklch(71% 0.143 215.221);
+  --color-info-content: oklch(98% 0.019 200.873);
+  --color-success: oklch(69% 0.17 162.48);
+  --color-success-content: oklch(97% 0.021 166.113);
+  --color-warning: oklch(76% 0.188 70.08);
+  --color-warning-content: oklch(98% 0.022 95.277);
+  --color-error: oklch(65% 0.241 354.308);
+  --color-error-content: oklch(97% 0.014 343.198);
+  --radius-selector: 0.5rem;
+  --radius-field: 2rem;
+  --radius-box: 0rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
 }
 
 /* 1. Define Font Variable */
@@ -16,7 +49,7 @@
 @font-face {
   font-family: "Ithaca";
   src: url("../assets/fonts/Ithaca-LVB75.ttf") format("truetype");
-  font-display: swap; /* Ensures text is visible while font loads */
+  font-display: block;
 }
 
 /* 3. Global Defaults */
@@ -43,20 +76,6 @@
       oklch(var(--p))
     ); /* Outlines use primary color */
   }
-
-  /* Improved Typography Defaults */
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-black tracking-tighter;
-  }
-
-  p {
-    @apply leading-relaxed;
-  }
 }
 
 /* Custom Scrollbar (Optional but recommended for dark themes) */
@@ -68,4 +87,16 @@
 }
 ::-webkit-scrollbar-thumb {
   @apply bg-primary/20 rounded-full hover:bg-primary/40 transition-colors;
+}
+
+@layer utilities {
+  .text-outlined {
+    text-shadow:
+      -3px -3px 0 #000,
+      3px -3px 0 #000,
+      -3px 3px 0 #000,
+      3px 3px 0 #000;
+    color: white;
+    letter-spacing: 0.05em;
+  }
 }
