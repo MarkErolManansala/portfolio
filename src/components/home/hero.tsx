@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-
+import { BouncyText } from "../ui/bouncing-letter";
+import { FloatingOrbs } from "../ui/orb-trail";
 
 export const Grid = () => {
     const spacing = 40;
-    const [hovered, setHovered] = useState<number | null>(null);
     const [dims, setDims] = useState({ cols: 0, rows: 0 });
 
     useEffect(() => {
@@ -20,16 +20,6 @@ export const Grid = () => {
     const { cols, rows } = dims;
     const total = cols * rows;
 
-    const getAlpha = (i: number) => {
-        if (hovered === null) return 0;
-        const hCol = hovered % cols;
-        const hRow = Math.floor(hovered / cols);
-        const col = i % cols;
-        const row = Math.floor(i / cols);
-        const dist = Math.sqrt((col - hCol) ** 2 + (row - hRow) ** 2);
-        return Math.max(0, 1 - dist / 4);
-    };
-
     return (
         <div className="absolute inset-0 z-0 w-full h-full overflow-hidden">
             <div
@@ -42,15 +32,11 @@ export const Grid = () => {
                 {Array.from({ length: total }, (_, i) => (
                     <div
                         key={i}
-                        onMouseEnter={() => setHovered(i)}
-                        onMouseLeave={() => setHovered(null)}
                         style={{
                             width: spacing,
                             height: spacing,
                             borderRight: "0.5px solid rgba(110,140,200,0.12)",
                             borderBottom: "0.5px solid rgba(110,140,200,0.12)",
-                            backgroundColor: `rgba(110,140,200,${(getAlpha(i) * 0.08).toFixed(3)})`,
-                            transition: "background-color 0.2s ease",
                         }}
                     />
                 ))}
@@ -59,15 +45,16 @@ export const Grid = () => {
                 className="pointer-events-none absolute inset-0"
                 style={{
                     background: `
-                    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(110,140,200,0.08) 0%, transparent 70%),
-                    linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.6) 100%),
-                    linear-gradient(to right, rgba(0,0,0,0.3) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.3) 100%)
-                `,
+            radial-gradient(ellipse 80% 50% at 50% 0%, rgba(110,140,200,0.08) 0%, transparent 70%),
+            linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.6) 100%),
+            linear-gradient(to right, rgba(0,0,0,0.3) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.3) 100%)
+          `,
                 }}
             />
         </div>
     );
 };
+
 
 export const Hero = () => {
     return (
@@ -95,9 +82,10 @@ export const Hero = () => {
                     className="flex flex-col z-50 items-center md:items-start text-center md:text-left select-none"
                 >
                     <h2 className="text-6xl xl:text-8xl font-black uppercase  ">
-                        HI, I'M<br />
-                        <span className="text-outlined">Mark Erol</span><br />
-                        Manansala
+                        <BouncyText text="HI, I'M" className="text-9xl font-black uppercase" />
+                        <BouncyText text="Mark Erol" outlined className="text-9xl font-black uppercase" />
+                        <BouncyText text="Manansala" className="text-9xl font-black uppercase" />
+
                     </h2>
 
                     <div className="mt-6 w-16 h-0.5 bg-primary" />
@@ -125,12 +113,13 @@ export const Hero = () => {
                     initial={{ x: 40 }}
                     animate={{ x: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="relative hidden md:flex justify-center items-end "
+                    className="relative hidden md:flex justify-center items-end h-full min-h-125" // ← add height
                 >
+                    <FloatingOrbs />
                     <img
                         src="/pictures/me.webp"
                         alt="Mark Erol Manansala"
-                        className="h-full w-auto object-contain brightness-110 scale-x-[-1] filter-[drop-shadow(0_4px_6px_rgba(0,0,0,1))]"
+                        className="relative z-10 h-full w-auto object-contain brightness-110 scale-x-[-1] filter-[drop-shadow(0_4px_6px_rgba(0,0,0,1))]"
                     />
                 </motion.div>
 

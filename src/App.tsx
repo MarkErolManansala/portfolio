@@ -1,4 +1,5 @@
 import { Hero } from "./components/home/hero"
+import { Projects } from "./components/home/projects"
 import { NavigationBar } from "./components/navbar"
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <div className="relative">
       <NavigationBar />
       <Hero />
+      <Projects />
     </div>
   )
 }
