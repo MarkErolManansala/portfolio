@@ -50,6 +50,7 @@
   font-family: "Ithaca";
   src: url("../assets/fonts/Ithaca-LVB75.ttf") format("truetype");
   font-display: block;
+  size-adjust: 120%;
 }
 
 /* 3. Global Defaults */

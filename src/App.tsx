@@ -5,10 +5,10 @@ function App() {
 
 
   return (
-    <>
+    <div className="relative">
       <NavigationBar />
       <Hero />
-    </>
+    </div>
   )
 }
 

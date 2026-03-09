@@ -71,16 +71,28 @@ export const Grid = () => {
 
 export const Hero = () => {
     return (
-        <section className="relative w-full flex items-center overflow-hidden">
+        <section className="relative w-full flex pt-20  items-center overflow-hidden">
             <Grid />
-            <div className="relative z-30 w-full max-w-7xl mx-auto px-6 lg:px-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="relative z-30 w-full max-w-7xl  mx-auto px-6 md:px-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
+                <motion.div
+                    initial={{ x: 40 }}
+                    animate={{ x: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="relative flex md:hidden justify-center items-end pt-10"
+                >
+                    <img
+                        src="/pictures/me-square.webp"
+                        alt="Mark Erol Manansala"
+                        className=" w-56 p-4 pb-0 border-2 rounded-2xl object-contain brightness-110  filter-[drop-shadow(0_4px_6px_rgba(0,0,0,1))]"
+                    />
+                </motion.div>
                 {/* LEFT — TEXT CONTENT */}
                 <motion.div
                     initial={{ opacity: 0, x: -40 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="flex flex-col z-50 items-center lg:items-start text-center lg:text-left select-none"
+                    className="flex flex-col z-50 items-center md:items-start text-center md:text-left select-none"
                 >
                     <h2 className="text-6xl xl:text-8xl font-black uppercase  ">
                         HI, I'M<br />
@@ -90,17 +102,17 @@ export const Hero = () => {
 
                     <div className="mt-6 w-16 h-0.5 bg-primary" />
 
-                    <p className="mt-6 text-sm font-bold tracking-[0.4em] uppercase text-primary mb-4">
+                    <p className="mt-6 font-bold tracking-[0.4em] uppercase text-primary mb-4">
                         Full-stack Web Developer
                     </p>
 
-                    <p className="mt-6 text-sm max-w-sm leading-relaxed text-base-content/70">
+                    <p className="mt-6 max-w-sm leading-relaxed text-base-content/70">
                         I build fast, scalable web apps — CRMs, full-stack platforms, and everything in between.
                     </p>
 
                     <div className="mt-10 flex flex-wrap gap-4 justify-center lg:justify-start">
                         <button className="btn btn-primary font-black uppercase rounded-none px-10">
-                            VIEW WORK
+                            VIEW WORK+
                         </button>
                         <button className="btn uppercase rounded-none px-10">
                             CONTACT
@@ -113,7 +125,7 @@ export const Hero = () => {
                     initial={{ x: 40 }}
                     animate={{ x: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="relative flex justify-center items-end h-100 lg:h-150"
+                    className="relative hidden md:flex justify-center items-end "
                 >
                     <img
                         src="/pictures/me.webp"
