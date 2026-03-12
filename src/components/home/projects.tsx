@@ -249,13 +249,13 @@ export const Projects = () => {
                     transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                     className="mb-20 select-none"
                 >
-                    <p className="text-sm font-black  uppercase text-primary mb-4">
-                        — Chapter 02 —
+                    <p className="uppercase textarea-xl">
+                        - Chapter 02 -
                     </p>
 
                     {/* Heading + Dragon side by side */}
-                    <BouncyText text="MY" className="text-9xl font-black uppercase" />
-                    <BouncyText text="WORKS" outlined className="text-9xl font-black uppercase" />
+                    <BouncyText text="MY" className="text-8xl md:text-9xl  font-black uppercase" />
+                    <BouncyText text="WORKS" outlined className="text-8xl md:text-9xl  font-black uppercase" />
 
                     <div className="mt-8 flex items-center gap-5">
                         <div className="h-px w-20 bg-primary" />
